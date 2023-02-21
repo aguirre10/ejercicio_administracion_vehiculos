@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/vue', function () {
+    return view('vue');
+});
+
+Route::get('/index', function () {
+    return view('index');
+});
+
+//Route::get('/registrar_entrada', [VehiculoController::class, 'registrar_entrada'])->name('registrar.entrada');
+
+Route::get('/registrar_entrada', function () {
+    return view('registrar_entrada');
+});
+
