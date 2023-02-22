@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\VehiculoController;
+use App\Http\Controllers\EstanciaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,9 @@ Route::post('/save', [App\Http\Controllers\EmpleadoController::class, 'store']);
 Route::get('/verVehiculos/{tipo?}', [App\Http\Controllers\VehiculoController::class, 'verVehiculos']);
 Route::post('/altaOficial', [App\Http\Controllers\VehiculoController::class, 'altaOficial']);
 Route::post('/altaResidente', [App\Http\Controllers\VehiculoController::class, 'altaResidente']);
+
+Route::post('/registrarEntrada', [App\Http\Controllers\EstanciaController::class, 'registrarEntrada']);
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Estancia;
+use App\Models\Vehiculo;
 
 class EstanciaController extends Controller
 {
@@ -16,44 +17,31 @@ class EstanciaController extends Controller
         return view('estancias.index', compact('estancias'));
     }
 
-    public function create()
+    public function registrarEntrada(Request $request)
     {
-        return view('estancias.create');
+        $placa = $request->input('placa');
+        $hora_entrada = now();
+
+        $estancia = Estancia::where('placa', $placa)->first();
+        $vehiculo = Vehiculo::where('placa', $placa)->first();
+
+        if ($estancia && $vehiculo && $vehiculo->tipo_vehiculo == "Residente") {
+            $estancia->hora_entrada = $hora_entrada;
+            $estancia->save();
+
+            return response()->json($estancia);
+        } else {
+            $estancia = new Estancia;
+            $estancia->placa = $placa;
+            $estancia->estado = 'Activo';
+            $estancia->hora_entrada = $hora_entrada;
+            $estancia->save();
+
+            return response()->json($estancia);
+        }
     }
 
-    public function store(Request $request)
-    {
-        $estancia = new Estancia();
-        $estancia->fill($request->all());
-        $estancia->save();
-        return redirect()->route('estancias.index');
-    }
 
-    public function show($id)
-    {
-        return view('estancias.show', compact('estancia'));
-    }
-
-    public function edit($id)
-    {
-        $estancia = Estancia::find($id);
-        return view('estancias.edit', compact('estancia'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $estancia = Estancia::find($id);
-        $estancia->fill($request->all());
-        $estancia->save();
-        return redirect()->route('estancias.index');
-    }
-
-    public function destroy($id)
-    {
-        $estancia = Estancia::find($id);
-        $estancia->delete();
-        return redirect()->route('estancias.index');
-    }
 
 
 }

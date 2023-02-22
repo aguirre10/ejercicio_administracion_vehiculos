@@ -9,16 +9,16 @@ class Estancia extends Model
 {
     use HasFactory;
     protected $table = 'estancias';
+    protected $primaryKey = 'id_estancia';
 
     protected $fillable = [
         'placa',
+        'estado',
         'hora_entrada',
         'hora_salida',
-        'id_vehiculo'
+        'pago',
+        'pago_acumulado',
     ];
 
-    public function vehiculo()
-    {
-        return $this->belongsTo(Vehiculo::class, 'id_vehiculo');
-    }
+
 }
