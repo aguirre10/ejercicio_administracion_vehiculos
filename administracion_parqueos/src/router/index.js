@@ -4,6 +4,11 @@ import HelloWorld from '@/components/HelloWorld'
 import EmpleadosView from '@/components/EmpleadosView'
 import AltaOficialView from '@/components/AltaOficialView'
 import AltaResidenteView from '@/components/AltaResidenteView'
+import RegistrarEntradaView from '@/components/RegistrarEntradaView'
+import RegistrarSalidaView from '@/components/RegistrarSalidaView'
+import ComienzaMesView from '@/components/ComienzaMesView'
+import PagoResidentesView from '@/components/PagoResidentesView'
+
 
 Vue.use(Router)
 
@@ -31,6 +36,29 @@ export default new Router({
       path: '/AltaResidenteView',
       name: 'AltaResidenteView',
       component: AltaResidenteView
+    },
+
+    {
+      path: '/RegistrarEntradaView',
+      name: 'RegistrarEntradaView',
+      component: RegistrarEntradaView
+    },
+    {
+      path: '/RegistrarSalidaView',
+      name: 'RegistrarSalidaView',
+      component: RegistrarSalidaView
+    },
+
+    {
+      path: '/ComienzaMesView',
+      name: 'ComienzaMesView',
+      component: ComienzaMesView
+    },
+
+    {
+      path: '/PagoResidentesView',
+      name: 'PagoResidentesView',
+      component: PagoResidentesView
     }
 
   ]
