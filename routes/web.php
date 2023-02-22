@@ -31,3 +31,4 @@ Route::get('/registrar_entrada', function () {
     return view('registrar_entrada');
 });
 
+

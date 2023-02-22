@@ -9,14 +9,11 @@ class Empleado extends Model
 {
     use HasFactory;
     protected $table = 'empleados';
+    protected $primaryKey = 'id_empleados';
 
     protected $fillable = [
         'nombre',
         'apellido',
     ];
 
-    public function estancias()
-    {
-        return $this->belongsToMany(Estancia::class);
-    }
 }

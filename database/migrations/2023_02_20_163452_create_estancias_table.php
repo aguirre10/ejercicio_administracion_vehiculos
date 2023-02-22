@@ -15,13 +15,13 @@ class CreateEstanciasTable extends Migration
     {
         Schema::create('estancias', function (Blueprint $table) {
             $table->bigIncrements('id_estancia');
+            $table->string('placa');
+            $table->string('estado');
             $table->dateTime('hora_entrada');
             $table->dateTime('hora_salida');
-            $table->unsignedBigInteger('id_vehiculo');
+            $table->integer('pago');
+            $table->integer('pago_acumulado');
             $table->timestamps();
-        });
-        Schema::table('estancias', function (Blueprint $table) {
-            $table->foreign('id_vehiculo')->references('id_vehiculo')->on('vehiculos')->onDelete('cascade');
         });
     }
 

@@ -11,6 +11,7 @@ class Estancia extends Model
     protected $table = 'estancias';
 
     protected $fillable = [
+        'placa',
         'hora_entrada',
         'hora_salida',
         'id_vehiculo'

@@ -12,7 +12,17 @@ class EmpleadoController extends Controller
     {
         $empleados = Empleado::all();
 
-        return view('empleados.index', compact('empleados'));
+        return response()->json($empleados);
+    }
+
+    public function store(Request $request)
+    {
+        $empleado = new Empleado([
+            'nombre' => $request->input('nombre'),
+            'apellido' => $request->input('apellido'),
+        ]);
+        $empleado->save();
+        return response()->json('Empleado creado con éxito');
     }
 
     public function create()
@@ -20,14 +30,6 @@ class EmpleadoController extends Controller
         return view('empleados.create');
     }
 
-    public function store(Request $request)
-    {
-        $empleado = new Empleado();
-        $empleado->nombre = $request->nombre;
-        $empleado->apellido = $request->apellido;
-        $empleado->save();
-        return redirect()->route('empleados.index')->with('success', 'Empleado creado con éxito');
-    }
 
     public function show($id)
     {
